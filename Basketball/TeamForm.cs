@@ -58,14 +58,19 @@ namespace Basketball
 					
 					if (flag)
 					{
-						Request req = new Request
+						int ind = requestCompIds[requestComboBox.SelectedIndex];
+						if (db.Request.Count(r => r.CompetitionId == ind) < 8)
 						{
-							CompetitionId = requestCompIds[requestComboBox.SelectedIndex],
-							TeamId = id
-						};
-						db.Request.Add(req);
-						db.SaveChanges();
-						MessageBox.Show("Заявка успешно подана!");
+							Request req = new Request
+							{
+								CompetitionId = ind,
+								TeamId = id
+							};
+							db.Request.Add(req);
+							db.SaveChanges();
+							MessageBox.Show("Заявка успешно подана!");
+						}
+						else MessageBox.Show("Заявки на это соревнование больше не принимаются");
 					}
 					else MessageBox.Show("Вы уже участвуете в этом соревновании");
 				}

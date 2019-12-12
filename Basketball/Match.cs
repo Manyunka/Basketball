@@ -17,15 +17,19 @@ namespace Basketball
 
         public int Id { get; set; }
 
-        public int RequestId1 { get; set; }
+		public int Round { get; set; }
+
+		public DateTime Date { get; set; }
+
+		public bool IsFinished { get; set; }
+
+		public int RequestId1 { get; set; }
 
         public int RequestId2 { get; set; }
 
         public int Score1 { get; set; }
 
         public int Score2 { get; set; }
-
-        public int? StadiumId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Event { get; set; }
@@ -34,6 +38,5 @@ namespace Basketball
 
         public virtual Request Request1 { get; set; }
 
-        public virtual Stadium Stadium { get; set; }
     }
 }

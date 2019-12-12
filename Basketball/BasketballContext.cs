@@ -17,7 +17,6 @@
 		public virtual DbSet<Match> Match { get; set; }
 		public virtual DbSet<Player> Player { get; set; }
 		public virtual DbSet<Request> Request { get; set; }
-		public virtual DbSet<Stadium> Stadium { get; set; }
 		public virtual DbSet<Sysdiagrams> Sysdiagrams { get; set; }
 		public virtual DbSet<Team> Team { get; set; }
 		public virtual DbSet<Competition> Competition { get; set; }

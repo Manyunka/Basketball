@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.label4 = new System.Windows.Forms.Label();
 			this.comboBox6 = new System.Windows.Forms.ComboBox();
@@ -48,6 +48,12 @@
 			this.compLabel = new System.Windows.Forms.Label();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
+			this.roundLabel = new System.Windows.Forms.Label();
+			this.team2Label = new System.Windows.Forms.Label();
+			this.team1Label = new System.Windows.Forms.Label();
+			this.createMatchButton = new System.Windows.Forms.Button();
+			this.label8 = new System.Windows.Forms.Label();
+			this.matchCompComboBox = new System.Windows.Forms.ComboBox();
 			this.tabPage5 = new System.Windows.Forms.TabPage();
 			this.yearNumericUpDown = new System.Windows.Forms.NumericUpDown();
 			this.createCompButton = new System.Windows.Forms.Button();
@@ -60,29 +66,33 @@
 			this.winnerListView = new System.Windows.Forms.ListView();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
 			this.scheduleListView = new System.Windows.Forms.ListView();
-			this.tabControl1.SuspendLayout();
+			this.matchDatePicker = new System.Windows.Forms.DateTimePicker();
+			this.matchTimePicker = new System.Windows.Forms.DateTimePicker();
+			this.tabControl.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
+			this.tabPage4.SuspendLayout();
 			this.tabPage5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown)).BeginInit();
 			this.tabPage2.SuspendLayout();
 			this.tabPage3.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// tabControl1
+			// tabControl
 			// 
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage4);
-			this.tabControl1.Controls.Add(this.tabPage5);
-			this.tabControl1.Controls.Add(this.tabPage2);
-			this.tabControl1.Controls.Add(this.tabPage3);
-			this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.tabControl1.Location = new System.Drawing.Point(12, 12);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(776, 426);
-			this.tabControl1.TabIndex = 0;
+			this.tabControl.Controls.Add(this.tabPage1);
+			this.tabControl.Controls.Add(this.tabPage4);
+			this.tabControl.Controls.Add(this.tabPage5);
+			this.tabControl.Controls.Add(this.tabPage2);
+			this.tabControl.Controls.Add(this.tabPage3);
+			this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.tabControl.Location = new System.Drawing.Point(12, 12);
+			this.tabControl.Name = "tabControl";
+			this.tabControl.SelectedIndex = 0;
+			this.tabControl.Size = new System.Drawing.Size(776, 426);
+			this.tabControl.TabIndex = 0;
+			this.tabControl.SelectedIndexChanged += new System.EventHandler(this.TabControl_SelectedIndexChanged);
 			// 
 			// tabPage1
 			// 
@@ -166,6 +176,7 @@
 			// 
 			// comboBox5
 			// 
+			this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox5.FormattingEnabled = true;
 			this.comboBox5.Location = new System.Drawing.Point(512, 80);
 			this.comboBox5.Name = "comboBox5";
@@ -183,6 +194,7 @@
 			// 
 			// comboBox4
 			// 
+			this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox4.FormattingEnabled = true;
 			this.comboBox4.Location = new System.Drawing.Point(261, 80);
 			this.comboBox4.Name = "comboBox4";
@@ -200,6 +212,7 @@
 			// 
 			// comboBox3
 			// 
+			this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox3.FormattingEnabled = true;
 			this.comboBox3.Location = new System.Drawing.Point(10, 80);
 			this.comboBox3.Name = "comboBox3";
@@ -236,6 +249,7 @@
 			// 
 			// comboBox2
 			// 
+			this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox2.FormattingEnabled = true;
 			this.comboBox2.Location = new System.Drawing.Point(392, 26);
 			this.comboBox2.Name = "comboBox2";
@@ -253,6 +267,7 @@
 			// 
 			// comboBox1
 			// 
+			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox1.FormattingEnabled = true;
 			this.comboBox1.Location = new System.Drawing.Point(10, 26);
 			this.comboBox1.Name = "comboBox1";
@@ -262,12 +277,76 @@
 			// tabPage4
 			// 
 			this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
+			this.tabPage4.Controls.Add(this.matchTimePicker);
+			this.tabPage4.Controls.Add(this.matchDatePicker);
+			this.tabPage4.Controls.Add(this.roundLabel);
+			this.tabPage4.Controls.Add(this.team2Label);
+			this.tabPage4.Controls.Add(this.team1Label);
+			this.tabPage4.Controls.Add(this.createMatchButton);
+			this.tabPage4.Controls.Add(this.label8);
+			this.tabPage4.Controls.Add(this.matchCompComboBox);
 			this.tabPage4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.tabPage4.Location = new System.Drawing.Point(4, 25);
 			this.tabPage4.Name = "tabPage4";
 			this.tabPage4.Size = new System.Drawing.Size(768, 397);
 			this.tabPage4.TabIndex = 3;
 			this.tabPage4.Text = "Создать матч";
+			// 
+			// roundLabel
+			// 
+			this.roundLabel.AutoSize = true;
+			this.roundLabel.Location = new System.Drawing.Point(362, 201);
+			this.roundLabel.Name = "roundLabel";
+			this.roundLabel.Size = new System.Drawing.Size(55, 20);
+			this.roundLabel.TabIndex = 13;
+			this.roundLabel.Text = "Раунд";
+			// 
+			// team2Label
+			// 
+			this.team2Label.AutoSize = true;
+			this.team2Label.Location = new System.Drawing.Point(474, 257);
+			this.team2Label.Name = "team2Label";
+			this.team2Label.Size = new System.Drawing.Size(105, 20);
+			this.team2Label.TabIndex = 12;
+			this.team2Label.Text = "Команда №2";
+			this.team2Label.TextAlign = System.Drawing.ContentAlignment.TopRight;
+			// 
+			// team1Label
+			// 
+			this.team1Label.AutoSize = true;
+			this.team1Label.Location = new System.Drawing.Point(205, 257);
+			this.team1Label.Name = "team1Label";
+			this.team1Label.Size = new System.Drawing.Size(105, 20);
+			this.team1Label.TabIndex = 11;
+			this.team1Label.Text = "Команда №1";
+			// 
+			// createMatchButton
+			// 
+			this.createMatchButton.Location = new System.Drawing.Point(332, 137);
+			this.createMatchButton.Name = "createMatchButton";
+			this.createMatchButton.Size = new System.Drawing.Size(118, 29);
+			this.createMatchButton.TabIndex = 10;
+			this.createMatchButton.Text = "Создать";
+			this.createMatchButton.UseVisualStyleBackColor = true;
+			this.createMatchButton.Click += new System.EventHandler(this.CreateMatchButton_Click);
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(205, 48);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(119, 20);
+			this.label8.TabIndex = 9;
+			this.label8.Text = "Соревнование";
+			// 
+			// matchCompComboBox
+			// 
+			this.matchCompComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.matchCompComboBox.FormattingEnabled = true;
+			this.matchCompComboBox.Location = new System.Drawing.Point(209, 71);
+			this.matchCompComboBox.Name = "matchCompComboBox";
+			this.matchCompComboBox.Size = new System.Drawing.Size(370, 28);
+			this.matchCompComboBox.TabIndex = 8;
 			// 
 			// tabPage5
 			// 
@@ -404,22 +483,39 @@
 			this.scheduleListView.TabIndex = 10;
 			this.scheduleListView.UseCompatibleStateImageBehavior = false;
 			// 
+			// matchDatePicker
+			// 
+			this.matchDatePicker.Location = new System.Drawing.Point(209, 105);
+			this.matchDatePicker.Name = "matchDatePicker";
+			this.matchDatePicker.Size = new System.Drawing.Size(200, 26);
+			this.matchDatePicker.TabIndex = 14;
+			// 
+			// matchTimePicker
+			// 
+			this.matchTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.matchTimePicker.Location = new System.Drawing.Point(415, 105);
+			this.matchTimePicker.Name = "matchTimePicker";
+			this.matchTimePicker.Size = new System.Drawing.Size(164, 26);
+			this.matchTimePicker.TabIndex = 15;
+			// 
 			// JudgeForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.tabControl1);
+			this.Controls.Add(this.tabControl);
 			this.MaximumSize = new System.Drawing.Size(816, 489);
 			this.MinimumSize = new System.Drawing.Size(816, 489);
 			this.Name = "JudgeForm";
 			this.Text = "JudgeForm";
 			this.Load += new System.EventHandler(this.JudgeForm_Load);
-			this.tabControl1.ResumeLayout(false);
+			this.tabControl.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.tabPage1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox1.ResumeLayout(false);
+			this.tabPage4.ResumeLayout(false);
+			this.tabPage4.PerformLayout();
 			this.tabPage5.ResumeLayout(false);
 			this.tabPage5.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.yearNumericUpDown)).EndInit();
@@ -431,7 +527,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.TabControl tabControl;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.Label matchLabel;
@@ -463,5 +559,13 @@
 		private System.Windows.Forms.TextBox compTextBox;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.NumericUpDown yearNumericUpDown;
+		private System.Windows.Forms.Label team2Label;
+		private System.Windows.Forms.Label team1Label;
+		private System.Windows.Forms.Button createMatchButton;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.ComboBox matchCompComboBox;
+		private System.Windows.Forms.Label roundLabel;
+		private System.Windows.Forms.DateTimePicker matchTimePicker;
+		private System.Windows.Forms.DateTimePicker matchDatePicker;
 	}
 }
