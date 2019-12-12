@@ -252,6 +252,7 @@
 			this.requestButton.TabIndex = 2;
 			this.requestButton.Text = "Подать заявку";
 			this.requestButton.UseVisualStyleBackColor = true;
+			this.requestButton.Click += new System.EventHandler(this.RequestButton_Click);
 			// 
 			// label1
 			// 
