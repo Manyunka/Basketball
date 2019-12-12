@@ -6,10 +6,11 @@ namespace Basketball
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Сompetition
+	[Table("Competition")]
+	public partial class Competition
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Сompetition()
+        public Competition()
         {
             Request = new HashSet<Request>();
         }
@@ -24,7 +25,7 @@ namespace Basketball
         [StringLength(50)]
         public string Country { get; set; }
 
-        public int Year { get; set; }
+        public decimal Year { get; set; }
 
         public int? WinnerId { get; set; }
 

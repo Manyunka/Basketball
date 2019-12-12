@@ -87,7 +87,7 @@
     <Compile Include="Stadium.cs" />
     <Compile Include="Sysdiagrams.cs" />
     <Compile Include="Team.cs" />
-    <Compile Include="Сompetition.cs" />
+    <Compile Include="Competition.cs" />
     <EmbeddedResource Include="JudgeForm.resx">
       <DependentUpon>JudgeForm.cs</DependentUpon>
     </EmbeddedResource>

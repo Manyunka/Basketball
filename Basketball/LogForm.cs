@@ -153,6 +153,7 @@ namespace Basketball
 								TeamForm tF = new TeamForm(t.Id);
 								tF.ShowDialog();
 								flag = true;
+								Hide();
 								break;
 							}
 					}
@@ -165,12 +166,15 @@ namespace Basketball
 								JudgeForm jF = new JudgeForm(j.Id);
 								jF.ShowDialog();
 								flag = true;
+								Hide();
 								break;
 							}
 					}
 				}
 				if (flag)
+				{
 					Close();
+				}		
 				else MessageBox.Show("Неверный логин или пароль");
 			}
 			else MessageBox.Show("Данные введены некорректно");

@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.homeListView = new System.Windows.Forms.ListView();
 			this.compLabel = new System.Windows.Forms.Label();
@@ -45,29 +45,34 @@
 			this.playerListView = new System.Windows.Forms.ListView();
 			this.tabPage5 = new System.Windows.Forms.TabPage();
 			this.scheduleListView = new System.Windows.Forms.ListView();
-			this.tabPage6 = new System.Windows.Forms.TabPage();
-			this.tabControl1.SuspendLayout();
+			this.requestTabPage = new System.Windows.Forms.TabPage();
+			this.requestButton = new System.Windows.Forms.Button();
+			this.label1 = new System.Windows.Forms.Label();
+			this.requestComboBox = new System.Windows.Forms.ComboBox();
+			this.tabControl.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
 			this.tabPage3.SuspendLayout();
 			this.tabPage4.SuspendLayout();
 			this.tabPage5.SuspendLayout();
+			this.requestTabPage.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// tabControl1
+			// tabControl
 			// 
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage2);
-			this.tabControl1.Controls.Add(this.tabPage3);
-			this.tabControl1.Controls.Add(this.tabPage4);
-			this.tabControl1.Controls.Add(this.tabPage5);
-			this.tabControl1.Controls.Add(this.tabPage6);
-			this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.tabControl1.Location = new System.Drawing.Point(12, 12);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(776, 426);
-			this.tabControl1.TabIndex = 0;
+			this.tabControl.Controls.Add(this.tabPage1);
+			this.tabControl.Controls.Add(this.tabPage2);
+			this.tabControl.Controls.Add(this.tabPage3);
+			this.tabControl.Controls.Add(this.tabPage4);
+			this.tabControl.Controls.Add(this.tabPage5);
+			this.tabControl.Controls.Add(this.requestTabPage);
+			this.tabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.tabControl.Location = new System.Drawing.Point(12, 12);
+			this.tabControl.Name = "tabControl";
+			this.tabControl.SelectedIndex = 0;
+			this.tabControl.Size = new System.Drawing.Size(776, 426);
+			this.tabControl.TabIndex = 0;
+			this.tabControl.SelectedIndexChanged += new System.EventHandler(this.TabControl_SelectedIndexChanged);
 			// 
 			// tabPage1
 			// 
@@ -226,39 +231,72 @@
 			this.scheduleListView.TabIndex = 9;
 			this.scheduleListView.UseCompatibleStateImageBehavior = false;
 			// 
-			// tabPage6
+			// requestTabPage
 			// 
-			this.tabPage6.BackColor = System.Drawing.SystemColors.Control;
-			this.tabPage6.Location = new System.Drawing.Point(4, 25);
-			this.tabPage6.Name = "tabPage6";
-			this.tabPage6.Size = new System.Drawing.Size(768, 397);
-			this.tabPage6.TabIndex = 5;
-			this.tabPage6.Text = "Подать заявку";
+			this.requestTabPage.BackColor = System.Drawing.SystemColors.Control;
+			this.requestTabPage.Controls.Add(this.requestButton);
+			this.requestTabPage.Controls.Add(this.label1);
+			this.requestTabPage.Controls.Add(this.requestComboBox);
+			this.requestTabPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.requestTabPage.Location = new System.Drawing.Point(4, 25);
+			this.requestTabPage.Name = "requestTabPage";
+			this.requestTabPage.Size = new System.Drawing.Size(768, 397);
+			this.requestTabPage.TabIndex = 5;
+			this.requestTabPage.Text = "Подать заявку";
+			// 
+			// requestButton
+			// 
+			this.requestButton.Location = new System.Drawing.Point(281, 174);
+			this.requestButton.Name = "requestButton";
+			this.requestButton.Size = new System.Drawing.Size(227, 38);
+			this.requestButton.TabIndex = 2;
+			this.requestButton.Text = "Подать заявку";
+			this.requestButton.UseVisualStyleBackColor = true;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(177, 117);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(119, 20);
+			this.label1.TabIndex = 1;
+			this.label1.Text = "Соревнование";
+			// 
+			// requestComboBox
+			// 
+			this.requestComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.requestComboBox.FormattingEnabled = true;
+			this.requestComboBox.Location = new System.Drawing.Point(181, 140);
+			this.requestComboBox.Name = "requestComboBox";
+			this.requestComboBox.Size = new System.Drawing.Size(452, 28);
+			this.requestComboBox.TabIndex = 0;
 			// 
 			// TeamForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Controls.Add(this.tabControl1);
+			this.Controls.Add(this.tabControl);
 			this.MaximumSize = new System.Drawing.Size(816, 489);
 			this.MinimumSize = new System.Drawing.Size(816, 489);
 			this.Name = "TeamForm";
 			this.Text = "Кабинет игрока";
-			this.tabControl1.ResumeLayout(false);
+			this.tabControl.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
 			this.tabPage1.PerformLayout();
 			this.tabPage2.ResumeLayout(false);
 			this.tabPage3.ResumeLayout(false);
 			this.tabPage4.ResumeLayout(false);
 			this.tabPage5.ResumeLayout(false);
+			this.requestTabPage.ResumeLayout(false);
+			this.requestTabPage.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.TabControl tabControl1;
+		private System.Windows.Forms.TabControl tabControl;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;
 		private System.Windows.Forms.Label compLabel;
@@ -275,6 +313,9 @@
 		private System.Windows.Forms.ListView playerListView;
 		private System.Windows.Forms.TabPage tabPage5;
 		private System.Windows.Forms.ListView scheduleListView;
-		private System.Windows.Forms.TabPage tabPage6;
+		private System.Windows.Forms.TabPage requestTabPage;
+		private System.Windows.Forms.Button requestButton;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.ComboBox requestComboBox;
 	}
 }

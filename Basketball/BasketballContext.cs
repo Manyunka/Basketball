@@ -20,7 +20,7 @@
 		public virtual DbSet<Stadium> Stadium { get; set; }
 		public virtual DbSet<Sysdiagrams> Sysdiagrams { get; set; }
 		public virtual DbSet<Team> Team { get; set; }
-		public virtual DbSet<Сompetition> Сompetition { get; set; }
+		public virtual DbSet<Competition> Competition { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
@@ -66,13 +66,13 @@
 				.WillCascadeOnDelete(false);
 
 			modelBuilder.Entity<Team>()
-				.HasMany(e => e.Сompetition)
+				.HasMany(e => e.Competition)
 				.WithOptional(e => e.Team)
 				.HasForeignKey(e => e.WinnerId);
 
-			modelBuilder.Entity<Сompetition>()
+			modelBuilder.Entity<Competition>()
 				.HasMany(e => e.Request)
-				.WithRequired(e => e.Сompetition)
+				.WithRequired(e => e.Competition)
 				.HasForeignKey(e => e.TeamId)
 				.WillCascadeOnDelete(false);
 		}

@@ -18,7 +18,7 @@ namespace Basketball
 
         public int Id { get; set; }
 
-        public int СompetitionId { get; set; }
+        public int CompetitionId { get; set; }
 
         public int TeamId { get; set; }
 
@@ -30,6 +30,6 @@ namespace Basketball
 
         public virtual Team Team { get; set; }
 
-        public virtual Сompetition Сompetition { get; set; }
+        public virtual Competition Competition { get; set; }
     }
 }

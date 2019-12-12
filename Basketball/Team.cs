@@ -14,7 +14,7 @@ namespace Basketball
         {
             Player = new HashSet<Player>();
             Request = new HashSet<Request>();
-            Сompetition = new HashSet<Сompetition>();
+            Competition = new HashSet<Competition>();
         }
 
         public int Id { get; set; }
@@ -51,6 +51,6 @@ namespace Basketball
         public virtual ICollection<Request> Request { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Сompetition> Сompetition { get; set; }
+        public virtual ICollection<Competition> Competition { get; set; }
     }
 }

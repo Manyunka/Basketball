@@ -19,5 +19,21 @@ namespace Basketball
 			InitializeComponent();
 			this.id = id;
 		}
+
+		private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (tabControl.SelectedTab.Text == "Подать заявку")
+			{
+				using (BasketballContext db = new BasketballContext())
+				{
+					var competitions = db.Competition.ToList();
+					foreach (var comp in competitions)
+					{
+						requestComboBox.Items.Add(comp.Name + "-" + comp.Year + "-" + comp.Country);
+					}
+
+				}
+			}
+		}
 	}
 }
