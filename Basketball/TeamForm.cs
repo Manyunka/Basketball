@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace Basketball
 {
-	public partial class PlayerForm : Form
+	public partial class TeamForm : Form
 	{
-		public PlayerForm()
+		private readonly int id;
+
+		public TeamForm(int id)
 		{
 			InitializeComponent();
+			this.id = id;
 		}
 	}
 }

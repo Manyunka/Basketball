@@ -12,9 +12,12 @@ namespace Basketball
 {
 	public partial class JudgeForm : Form
 	{
-		public JudgeForm()
+		private readonly int id;
+
+		public JudgeForm(int id)
 		{
 			InitializeComponent();
+			this.id = id;
 		}
 
 	}

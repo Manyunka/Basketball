@@ -12,65 +12,168 @@ namespace Basketball
 {
 	public partial class LogForm : Form
 	{
-		string teamName;
-		string countryName;
+		private string regLogin;
+		private string regPassword;
+		private string teamName;
+		private string countryName;
+		private string trainerName;
+		private string trainerSurname;
 		public LogForm()
 		{
 			InitializeComponent();
 		}
 
-		private void NextButton_Click(object sender, EventArgs e)
+		private void NextRegButton_Click(object sender, EventArgs e)
 		{
-			teamName = teamTextBox.Text;
-			countryName = countryTextBox.Text;
+			if (regLoginTextBox.TextLength > 0 &&
+				regPasswordTextBox.TextLength > 0 &&
+				confPasswordextBox.Text == regPasswordTextBox.Text)
+			{
+				bool flag = true;
+				using (BasketballContext db = new BasketballContext())
+				{
+					var teams = db.Team.ToList();
+					foreach (var t in teams)
+						if (t.Login == regLoginTextBox.Text)
+						{
+							flag = false;
+							break;
+						}
+				}
 
-			playerPanel.BringToFront();
+				if (flag)
+				{
+					regLogin = regLoginTextBox.Text;
+					regPassword = regPasswordTextBox.Text;
+
+					teamPanel.BringToFront();
+				}
+				else MessageBox.Show("Логин занят");
+			}
+			else MessageBox.Show("Данные введены некорректно");
 		}
 
-		private void CompComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		private void BackTeamButton_Click(object sender, EventArgs e)
 		{
-			if (compComboBox.Text.Length > 0 &&
-				teamTextBox.Text.Length > 0 &&
-				countryTextBox.Text.Length > 0)
-				nextButton.Enabled = true;
+			registerPanel.BringToFront();
 		}
 
-		private void TeamTextBox_TextChanged(object sender, EventArgs e)
+		private void NextTeamButton_Click(object sender, EventArgs e)
 		{
-			if (compComboBox.Text.Length > 0 &&
-				teamTextBox.Text.Length > 0 &&
-				countryTextBox.Text.Length > 0)
-				nextButton.Enabled = true;
+			if (teamTextBox.TextLength > 0 &&
+				countryTextBox.TextLength > 0 &&
+				trainerNameTextBox.TextLength > 0 &&
+				trainerSurnameTextBox.TextLength > 0)
+			{
+
+				bool flag = true;
+				using (BasketballContext db = new BasketballContext())
+				{
+					var teams = db.Team.ToList();
+					foreach (var t in teams)
+						if (t.Name == teamTextBox.Text)
+						{
+							flag = false;
+							break;
+						}
+				}
+
+				if (flag)
+				{
+					teamName = teamTextBox.Text;
+					countryName = countryTextBox.Text;
+					trainerName = trainerNameTextBox.Text;
+					trainerSurname = trainerSurnameTextBox.Text;
+
+					playerPanel.BringToFront();
+				}
+				else MessageBox.Show("Такая команда уже существует");
+			}
+			else MessageBox.Show("Данные введены некорректно");
 		}
 
-		private void CountryTextBox_TextChanged(object sender, EventArgs e)
-		{
-			if (compComboBox.Text.Length > 0 &&
-				teamTextBox.Text.Length > 0 &&
-				countryTextBox.Text.Length > 0)
-				nextButton.Enabled = true;
-		}
-
-		private void BackButton_Click(object sender, EventArgs e)
+		private void BackPlayerButton_Click(object sender, EventArgs e)
 		{
 			teamPanel.BringToFront();
 		}
 
-		private void PlayerTextBox_TextChanged(object sender, EventArgs e)
+		private void RegisterButton_Click(object sender, EventArgs e)
 		{
+			string[] playerNames = playerNameTextBox.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+			string[] playerSurnames = playerSurnameTextBox.Text.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
+			if (playerNames.Length == 5 && playerSurnames.Length == 5)
+			{
+				using (BasketballContext db = new BasketballContext())
+				{
+					Team t = new Team
+					{
+						Login = regLogin,
+						Password = regPassword,
+						Name = teamName,
+						Сountry = countryName,
+						Rating = 0,
+						TrainerName = trainerName,
+						TrainerSurname = trainerSurname
+					};
+					db.Team.Add(t);
+					db.SaveChanges();
+
+					for (int i = 0; i < 5; i++)
+					{
+						Player p = new Player
+						{
+							Name = playerNames[i],
+							Surname = playerSurnames[i],
+							Rating = 0,
+							TeamId = t.Id
+						};
+						db.Player.Add(p);
+					}
+					db.SaveChanges();
+					registerPanel.BringToFront();
+				}
+			}
+			else MessageBox.Show("Данные введены некорректно");
 		}
 
-		private void RequestButton_Click(object sender, EventArgs e)
+		private void LoginButton_Click(object sender, EventArgs e)
 		{
-			if (playerRadioButton.Checked)
+			if (loginTextBox.TextLength > 0 && passwordTextBox.TextLength > 0)
 			{
-
+				bool flag = false;
+				using (BasketballContext db = new BasketballContext())
+				{
+					if (teamRadioButton.Checked)
+					{
+						var teams = db.Team.ToList();
+						foreach (var t in teams)
+							if (t.Login == loginTextBox.Text && t.Password == passwordTextBox.Text)
+							{
+								TeamForm tF = new TeamForm(t.Id);
+								tF.ShowDialog();
+								flag = true;
+								break;
+							}
+					}
+					else if (judgeRadioButton.Checked)
+					{
+						var judges = db.Judge.ToList();
+						foreach (var j in judges)
+							if (j.Login == loginTextBox.Text && j.Password == passwordTextBox.Text)
+							{
+								JudgeForm jF = new JudgeForm(j.Id);
+								jF.ShowDialog();
+								flag = true;
+								break;
+							}
+					}
+				}
+				if (flag)
+					Close();
+				else MessageBox.Show("Неверный логин или пароль");
 			}
-			else if (judgeRadioButton.Checked)
-			{
-
-			}
+			else MessageBox.Show("Данные введены некорректно");
 		}
 	}
 }

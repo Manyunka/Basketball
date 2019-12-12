@@ -1,6 +1,6 @@
 ﻿namespace Basketball
 {
-	partial class PlayerForm
+	partial class TeamForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -45,6 +45,7 @@
 			this.playerListView = new System.Windows.Forms.ListView();
 			this.tabPage5 = new System.Windows.Forms.TabPage();
 			this.scheduleListView = new System.Windows.Forms.ListView();
+			this.tabPage6 = new System.Windows.Forms.TabPage();
 			this.tabControl1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
 			this.tabPage2.SuspendLayout();
@@ -60,6 +61,7 @@
 			this.tabControl1.Controls.Add(this.tabPage3);
 			this.tabControl1.Controls.Add(this.tabPage4);
 			this.tabControl1.Controls.Add(this.tabPage5);
+			this.tabControl1.Controls.Add(this.tabPage6);
 			this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.tabControl1.Location = new System.Drawing.Point(12, 12);
 			this.tabControl1.Name = "tabControl1";
@@ -224,7 +226,16 @@
 			this.scheduleListView.TabIndex = 9;
 			this.scheduleListView.UseCompatibleStateImageBehavior = false;
 			// 
-			// PlayerForm
+			// tabPage6
+			// 
+			this.tabPage6.BackColor = System.Drawing.SystemColors.Control;
+			this.tabPage6.Location = new System.Drawing.Point(4, 25);
+			this.tabPage6.Name = "tabPage6";
+			this.tabPage6.Size = new System.Drawing.Size(768, 397);
+			this.tabPage6.TabIndex = 5;
+			this.tabPage6.Text = "Подать заявку";
+			// 
+			// TeamForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -232,7 +243,7 @@
 			this.Controls.Add(this.tabControl1);
 			this.MaximumSize = new System.Drawing.Size(816, 489);
 			this.MinimumSize = new System.Drawing.Size(816, 489);
-			this.Name = "PlayerForm";
+			this.Name = "TeamForm";
 			this.Text = "Кабинет игрока";
 			this.tabControl1.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
@@ -264,5 +275,6 @@
 		private System.Windows.Forms.ListView playerListView;
 		private System.Windows.Forms.TabPage tabPage5;
 		private System.Windows.Forms.ListView scheduleListView;
+		private System.Windows.Forms.TabPage tabPage6;
 	}
 }
